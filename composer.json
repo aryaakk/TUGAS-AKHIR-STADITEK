@@ -1,0 +1,16 @@
+{
+    "name" : "staditek/tugas-akhir",
+    "description" : "PHP",
+    "type" : "project",
+    "authors" : [
+        {
+            "name" : "ARYA TIO WASESA",
+            "email" : "aryatiowasesa1306@gmail.com"
+        }
+    ],
+    "autoload" : {
+        "psr-4" : {
+            "staditek\\TugasAkhir\\App\\" : "app" 
+        }
+    }
+}
