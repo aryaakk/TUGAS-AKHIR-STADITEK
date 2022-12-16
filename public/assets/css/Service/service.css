@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&family=Archivo+Black&family=Bree+Serif&family=Dosis:wght@500&family=Fredoka+One&family=Josefin+Sans:wght@400;500&family=Lilita+One&family=Prompt&family=Rajdhani:wght@600&family=Secular+One&display=swap');
+
+
+:root {
+    --font1: 'Alata', sans-serif;
+    --font2: 'Archivo Black', sans-serif;
+    --font3: 'Bree Serif', serif;
+    --font4: 'Dosis', sans-serif;
+    --font5: 'Fredoka One', cursive;
+    --font6: 'Josefin Sans', sans-serif;
+    --font7: 'Lilita One', cursive;
+    --font8: 'Prompt', sans-serif;
+    --font9: 'Rajdhani', sans-serif;
+    --font10: 'Secular One', sans-serif;
+}
+
+
+section#maincontent {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#maincontent header {
+    background-color: #CBF3F0;
+    width: 100%;
+    padding: 6rem 0 4rem 0;
+    overflow: hidden;
+    display: grid;
+    display: flex;
+    /* grid-template-columns: repeat(2, 1fr); */
+    /* grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); */
+    justify-content: space-between;
+}
+
+@keyframes left {
+    0% {
+        transform: translateX(-400px);
+    }
+
+    50% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50px);
+    }
+}
+
+header .content.right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+header .content.right .image {
+    width: 100%;
+}
+
+header .content.right .image img {
+    width: 100%;
+    z-index: 0;
+    animation-name: right;
+    animation-duration: 1s;
+    transition: 0.8s;
+    /* transform: translateX(100px); */
+}
+
+header .content.right .img:hover img {
+    margin-left: 250px;
+    transition: 0.2s;
+}
+
+@keyframes right {
+    0% {
+        transform: translateX(300px);
+        opacity: 0;
+    }
+
+    50% {
+        transform: translateX(-100px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+header .content.left {
+    padding: 60px 10px;
+    animation-name: center;
+    animation-duration: 2s;
+    display: flex;
+    width: 50%; 
+    flex-direction: column;
+    align-items: center;
+}
+
+@keyframes center {
+    0% {
+        transform: translateY(-300px);
+        opacity: 0;
+    }
+
+    50% {
+        transform: translateY(40px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+header .content.left .header {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+header .content.left .header i:hover {
+    transform: scale(0.9);
+}
+
+header .content.left .header h3 {
+    font-family: var(--font2);
+    color: #252525;
+    letter-spacing: 2px;
+    font-size: 60px;
+}
+
+header .content.left .header span {
+    font-family: var(--font1);
+    font-weight: bold;
+    font-size: 17px;
+    color: #370617;
+}
+
+header .content.left .but {
+    padding: 30px;
+}
+
+header .content.left .but a {
+    padding: 10px 30px;
+    background-color: #273E47;
+    border: 2px solid #273E47;
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-family: var(--font3);
+    color: #CBF3F0;
+    border-radius: 0px 30px 30px 30px;
+    transition: 0.3s;
+}
+
+header .content.left .but a:hover {
+    background-color: transparent;
+    border: 2px solid #273E47;
+    font-weight: bold;
+    color: #370617;
+}
+
+main {
+    margin: 30px 0;
+}
+
+main .row.first{
+    padding: 2rem 20px 4rem 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+main .row.first .card {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+main .row.first .card .headicon{
+    display: flex;
+    gap:50px;
+    width: 100%;
+    padding: 0 10px;
+    justify-content: center;
+}
+
+main .row.first .card .headicon img{
+    padding: 0 30px;
+    border-right: 2px solid #252525;
+}
+
+main .row.first .card .headicon h3{
+    font-family: var(--font10);
+    font-size: 40px;
+    width: 50%;
+    color: #393939;
+
+}
+
+main .row.first .card .text h4{
+    font-family: var(--font6);
+    font-size: 18px;
+    color: #252525;
+    text-align: center;
+}
+
+main .row.second{
+    padding: 3rem 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+main .row.second .left{
+    width: 50%;
+}
+
+main .row.second .left img{
+    width: 100%;
+    border-radius: 20% 100% 100% 20%;
+}
+
+main .row.second .right {
+    padding: 20px;
+}
+
+main .row.second .form{
+    background-color: #e5ddc66c;
+    padding: 30px;
+    display: flex;
+    width: 30rem;
+    flex-direction: column;
+    gap: 30px;
+}
+
+main .row.second .form .head span{
+    color: #E85D04;
+    font-family: var(--font4);
+}
+
+main .row.second .form .head h3{
+    font-family: var(--font6);
+    padding: 30px 0;
+    font-size: 40px;
+    width: 90%;
+    font-weight: bold;
+    color: #252525;
+}

@@ -18,9 +18,10 @@ class serviceModel extends database
 
     public function saveData($data)
     {
-        $statement = self::$conn->prepare("INSERT INTO $this->table(reference_no, service_name, service_detail, service_fee, user_id) VALUES(
+        $statement = self::$conn->prepare("INSERT INTO $this->table(reference_no, service_name, service_picture, service_detail, service_fee, user_id) VALUES(
             :reference_no, 
             :service_name,
+            :service_picture,
             :service_detail,
             :service_fee,
             :user_id
@@ -41,6 +42,7 @@ class serviceModel extends database
         $statement = self::$conn->prepare("UPDATE $this->table SET 
             reference_no = :reference_no, 
             service_name= :service_name,
+            service_picture = :service_picture, 
             service_detail= :service_detail,
             service_fee = :service_fee,
             user_id = :user_id

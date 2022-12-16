@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&family=Archivo+Black&family=Bree+Serif&family=Dosis:wght@500&family=Fredoka+One&family=Josefin+Sans:wght@400;500&family=Lilita+One&family=Prompt&family=Rajdhani:wght@600&family=Secular+One&display=swap');
+
+
+:root {
+    --font1: 'Alata', sans-serif;
+    --font2: 'Archivo Black', sans-serif;
+    --font3: 'Bree Serif', serif;
+    --font4: 'Dosis', sans-serif;
+    --font5: 'Fredoka One', cursive;
+    --font6: 'Josefin Sans', sans-serif;
+    --font7: 'Lilita One', cursive;
+    --font8: 'Prompt', sans-serif;
+    --font9: 'Rajdhani', sans-serif;
+    --font10: 'Secular One', sans-serif;
+}
+
+*, *:before, *:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #efefef;
+    scroll-behavior: smooth;
+}
+
+.wrapperNav {
+    /* overflow: hidden; */
+    width: 100%;
+    position: fixed;
+    z-index: 10;
+}
+
+.wrapperNav nav {
+    padding: 5px 40px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    background-color: transparent;
+    color: #dfd2d2;
+    transition: ease-out 0.3s;
+    /* border-bottom: 2px solid ; */
+}
+
+nav.window-scroll {
+    background-color: #d8c99be9;
+    backdrop-filter: blur(10px);
+    box-shadow: 2px 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+nav.window-scroll .nav .navbrand .image .img1 {
+    display: none;
+}
+
+nav.window-scroll .nav .navbrand .image .img2 {
+    display: block;
+}
+
+nav.window-scroll .nav .navbrand span {
+    color: #370617;
+}
+
+nav .nav .navbrand {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+nav .nav .navbrand .image {
+    display: flex;
+    align-items: center;
+    width: 4rem;
+}
+
+nav .nav .navbrand .image .img1 {
+    width: 100%;
+}
+
+nav .nav .navbrand .image .img2 {
+    display: none;
+    width: 100%;
+}
+
+nav .nav .navbrand span {
+    font-size: 23px;
+    font-family: var(--font7);
+    color: #dfd2d2;
+    letter-spacing: 2px;
+}
+
+nav .nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+nav .nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav .nav ul li a {
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 17px;
+    text-decoration: none;
+    font-family: var(--font1);
+    color: #dfd2d2;
+    transition: 0.1s;
+}
+
+nav.window-scroll .nav ul li a {
+    padding: 10px 20px;
+    text-decoration: none;
+    font-family: var(--font1);
+    color: #370617;
+}
+
+nav .nav ul li a:hover {
+    background-color: #D8C99B;
+    color: #252525;
+    border-radius: 0 60px 60px 60px;
+}
+
+nav.window-scroll .nav ul li a:hover {
+    border-radius: 0 60px 60px 60px;
+    background-color: #E85D04;
+    color: #252525;
+}
+
+nav .nav ul li a.active {
+    background-color: #D8C99B;
+    color: #252525;
+    border-radius: 0 60px 60px 60px;
+}
+
+nav.window-scroll .nav ul li a.active {
+    border-radius: 0 60px 60px 60px;
+    background-color: #E85D04;
+    color: #252525;
+}
+
+nav .nav ul li a.active:hover {
+    color: #E85D04;
+}
+
+nav.window-scroll .nav ul li a.active:hover {
+    color: #D8C99B;
+}
+
+nav .nav-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav .nav-side ul {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+nav .nav-side ul li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav .nav-side ul li a {
+    text-decoration: none;
+    color: #dfd2d2;
+    padding: 10px;
+    transition: 0.1s;
+    font-family: var(--font1);
+}
+
+nav.window-scroll .nav-side ul li a {
+    text-decoration: none;
+    color: #252525;
+    font-weight: bold;
+    padding: 10px;
+    font-family: var(--font1);
+}
+
+nav .nav-side ul li a:hover {
+    background-color: #D8C99B;
+    color: #252525;
+    font-weight: bold;
+    border-radius: 0 60px 60px 60px;
+}
+
+nav.window-scroll .nav-side ul li a:hover {
+    border-radius: 0 60px 60px 60px;
+    background-color: #E85D04;
+    color: #252525;
+}
+
+nav .nav-side ul li i {
+    cursor: pointer;
+    padding: 10px;
+    font-weight: bold;
+}
+
+nav.window-scroll .nav-side ul li i {
+    cursor: pointer;
+    padding: 10px;
+    color: #252525;
+}
+
+nav .nav-side ul li i:hover {
+    border-bottom: 2px solid #370617;
+}

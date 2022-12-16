@@ -37,6 +37,14 @@ class usersModel extends database{
         return $statement->fetch(\PDO::FETCH_OBJ);
     }
 
+    public function findByEmail($email)
+    {
+        $statement = self::$conn->prepare("SELECT * FROM $this->table WHERE email = '$email'");
+        $statement->execute();
+
+        return $statement->fetch(\PDO::FETCH_OBJ);
+    }
+
     public function updateData($data) {
         $statement = self::$conn->prepare("UPDATE $this->table SET 
             username = :username,

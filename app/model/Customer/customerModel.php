@@ -16,6 +16,14 @@ class customerModel extends database
         return $statement->fetchAll(\PDO::FETCH_OBJ);
     }
 
+    public function findByEmail($email)
+    {
+        $statement = self::$conn->prepare("SELECT * FROM $this->table WHERE email_address = '$email'");
+        $statement->execute();
+
+        return $statement->fetch(\PDO::FETCH_OBJ);
+    }
+
     public function saveData($data)
     {
         $statement = self::$conn->prepare("INSERT INTO $this->table(customer_code, customer_name, email_address, contact_number, complete_address, avatar, username, password, status, user_id) VALUES(
