@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Des 2022 pada 10.48
+-- Waktu pembuatan: 16 Des 2022 pada 09.47
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.0.19
 
@@ -129,13 +129,21 @@ INSERT INTO `tbl_payment` (`payment_id`, `reference_no`, `payment_for`, `amount_
 
 CREATE TABLE `tbl_pet` (
   `pet_id` int(11) NOT NULL,
-  `pet_description` varchar(50) NOT NULL,
+  `pet_name` varchar(200) NOT NULL,
+  `pet_description` text NOT NULL,
   `pet_category_id` int(11) NOT NULL,
-  `vendor_id` int(11) NOT NULL,
-  `pet_images` blob NOT NULL,
+  `vendor_id` int(11) DEFAULT NULL,
+  `pet_images` varchar(500) NOT NULL,
   `pet_status` int(1) NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tbl_pet`
+--
+
+INSERT INTO `tbl_pet` (`pet_id`, `pet_name`, `pet_description`, `pet_category_id`, `vendor_id`, `pet_images`, `pet_status`, `user_id`) VALUES
+(1, 'Siamese Cat', 'The Siamese cat is one of the oldest recorded cat breeds. They are descended from the Felidae cat family. Several other types of cats are derived from Siamese cats, namely Balinese cats, Javanese cats, and Bengal cats.', 4, 1, 'siamese.jpg', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -149,6 +157,14 @@ CREATE TABLE `tbl_pet_category` (
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `tbl_pet_category`
+--
+
+INSERT INTO `tbl_pet_category` (`pet_category_id`, `pet_category_name`, `user_id`) VALUES
+(3, 'dog', 1),
+(4, 'cat', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -157,9 +173,10 @@ CREATE TABLE `tbl_pet_category` (
 
 CREATE TABLE `tbl_pet_product` (
   `pet_product_id` int(11) NOT NULL,
-  `product_code` varchar(30) NOT NULL,
+  `product_code` varchar(50) NOT NULL,
+  `product_image` varchar(500) NOT NULL,
   `product_name` varchar(100) NOT NULL,
-  `product_detail` varchar(500) NOT NULL,
+  `product_detail` text NOT NULL,
   `product_category_id` int(11) NOT NULL,
   `quantity_on_hand` int(5) NOT NULL,
   `vendor_price` float NOT NULL,
@@ -174,8 +191,13 @@ CREATE TABLE `tbl_pet_product` (
 -- Dumping data untuk tabel `tbl_pet_product`
 --
 
-INSERT INTO `tbl_pet_product` (`pet_product_id`, `product_code`, `product_name`, `product_detail`, `product_category_id`, `quantity_on_hand`, `vendor_price`, `retail_price`, `discount`, `vendor_id`, `status`, `user_id`) VALUES
-(1, 'makanan01', 'WHISKAS® DRY ADULT 1+ INDOOR', 'Sebagai pencipta makanan kucing WHISKAS®, kami tahu bahwa kucing rumahan memiliki kebutuhan diet khusus yang perlu disesuaikan dengan gaya hidup mereka yang santai. Kucing rumahan cenderung menghabiskan waktu mereka dengan tidur dan bersantai di tempat favorit mereka seharian, mereka tidak terlalu aktif dan membutuhkan hanya sedikit energi.', 1, 10, 150000, 170000, 0, 1, 1, 1);
+INSERT INTO `tbl_pet_product` (`pet_product_id`, `product_code`, `product_image`, `product_name`, `product_detail`, `product_category_id`, `quantity_on_hand`, `vendor_price`, `retail_price`, `discount`, `vendor_id`, `status`, `user_id`) VALUES
+(1, 'df01', 'https://cdn.onemars.net/sites/whiskas_id_xGoUJ_mwh5/image/thumb_new-pack-whk_in-door_1652271904013.png', 'WHISKAS® DRY ADULT 1+ INDOOR', 'Sebagai pencipta makanan kucing WHISKAS®, kami tahu bahwa kucing rumahan memiliki kebutuhan diet khusus yang perlu disesuaikan dengan gaya hidup mereka yang santai. Kucing rumahan cenderung menghabiskan waktu mereka dengan tidur dan bersantai di tempat favorit mereka seharian, mereka tidak terlalu aktif dan membutuhkan hanya sedikit energi.', 1, 10, 150000, 170000, 0, 1, 1, 1),
+(2, 'df02', 'https://cdn.onemars.net/sites/whiskas_id_xGoUJ_mwh5/image/thumb_new-pack-whk_skin-coat_1652272296139.png', 'WHISKAS® DRY ADULT 1+ SKIN & COAT', 'Bulu dan kulit yang indah adalah ciri khas kucing yang dirawat dengan baik dan sehat. Banyak faktor yang bisa menyebabkan kesehatan kulit & bulu yang jelek, seperti nutrisi yang buruk, berat badan yang berlebihan (yang mempersulit kucing Anda merawat tubuh mereka sendiri), usia tua dan bahkan terlalu sering dimandikan (yang bisa menghilangkan minyak alami dan menyebabkan iritasi kulit).', 7, 10, 200000, 250000, 0, 1, 1, 1),
+(3, 'df03', 'https://cdn.onemars.net/sites/whiskas_id_xGoUJ_mwh5/image/thumb_new-pack-whk_hairball_1652272467435.png', 'WHISKAS® DRY ADULT 1+ HAIRBALL CONTROL', 'Kucing menghabiskan setidaknya lima jam sehari untuk merawat dirinya. Lidah mereka yang kasar seperti amplas mudah menjaring rambut yang terlepas, yang kemudiannya tertelan. Meskipun bulu tersebut biasanya bisa melewati usus dan dikeluarkan melalui feses, beberapa kucing (terutama kucing berambut panjang) cenderung membentuk hairball di perutnya. Memang kucing dapat memuntahkan hairball (sesuatu yang sudah cukup tidak menyenangkan), namun hairball yang menumpuk di perut dapat menjadi masalah serius jika tersendat pada saluran pencernaan.', 7, 10, 200000, 220000, 0, 1, 1, 1),
+(4, 'df01', 'https://cdn.royalcanin-weshare-online.io/eCEqa2QBaxEApS7L2fi7/v290/fbn2016-packshot-british-shorthair-kitten?w=250&fm=jpg&auto=compress', 'British Shorthair Kitten', 'This specially designed moon-shaped kibble is adapted in size and texture to be easy for the British Shorthair kitten to grasp. The unique kibble encourages chewing to help support oral hygiene.', 7, 10, 150000, 200000, 0, 2, 1, 1),
+(6, 'df08', 'https://cdn.royalcanin-weshare-online.io/m1ayV30BBKJuub5qT8y3/v304/sol-kitten-ster-dry-packshot-b1?w=250&fm=jpg&auto=compress', 'KITTEN STERILISED', 'ROYAL CANIN® Sterilised Kitten is specially formulated to support the nutritional needs of sterilised kittens in the “consolidation phase” of their growth. This formula is suitable for 6 to 12-month-old sterilised kittens as they undergo a period of significant physical and behavioural changes.', 7, 10, 150000, 200000, 0, 2, 1, 1),
+(7, 'df010', 'https://cdn.royalcanin-weshare-online.io/m2kUrmsBG95Xk-RB3Pu-/v297/hairskin-ne-fcn-packshot?w=250&fm=jpg&auto=compress', 'Hair And Skin Care', 'ROYAL CANIN® Hair & Skin Care is an exclusive complex of nutrients that help to support the skin\'s barrier role. It contains high quality proteins, including specific amino acids, to maintain healthy hair growth and skin renewal.ROYAL CANIN® Hair & Skin Care includes an essential combination of omega-3 and omega-6 fatty acids for beneficial effects on skin health and coat condition.', 7, 10, 150000, 200000, 0, 2, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -186,6 +208,7 @@ INSERT INTO `tbl_pet_product` (`pet_product_id`, `product_code`, `product_name`,
 CREATE TABLE `tbl_pet_product_category` (
   `product_category_id` int(11) NOT NULL,
   `category_name` varchar(30) NOT NULL,
+  `description` text NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -193,9 +216,12 @@ CREATE TABLE `tbl_pet_product_category` (
 -- Dumping data untuk tabel `tbl_pet_product_category`
 --
 
-INSERT INTO `tbl_pet_product_category` (`product_category_id`, `category_name`, `user_id`) VALUES
-(1, 'makanan', 1),
-(2, 'mainan', 1);
+INSERT INTO `tbl_pet_product_category` (`product_category_id`, `category_name`, `description`, `user_id`) VALUES
+(1, 'WetFood', 'This wet food is useful for cats that have certain health conditions that require more water intake', 1),
+(2, 'RawFood', 'Raw food has many functions for your cat, such as supporting healthy teeth and dental hygiene. and also raw foods have higher protein than other types of food', 1),
+(7, 'DryFood', 'Dry food is also beneficial for the dental health of your cat and your dog. There are several dry food diets that have beneficial effects on teeth, either reducing tartar formation or slowing plaque accumulation. The activity of chewing dry food can clean plaque.', 1),
+(8, 'Treats', 'Treats are also necessary for your pet. apart from being a treats snack, it also functions to maintain the health of cats too, why?? because the content of treats usually has more ingredients that are useful for nourishing the baby\'s internal organs', 1),
+(10, 'Mainan', 'toys are also necessary for children, as a boredom buster for children or for their employers.', 1);
 
 -- --------------------------------------------------------
 
@@ -207,6 +233,7 @@ CREATE TABLE `tbl_service` (
   `service_id` int(11) NOT NULL,
   `reference_no` varchar(30) NOT NULL,
   `service_name` varchar(100) NOT NULL,
+  `service_picture` varchar(500) NOT NULL,
   `service_detail` varchar(500) NOT NULL,
   `service_fee` float NOT NULL,
   `user_id` int(11) NOT NULL
@@ -216,9 +243,9 @@ CREATE TABLE `tbl_service` (
 -- Dumping data untuk tabel `tbl_service`
 --
 
-INSERT INTO `tbl_service` (`service_id`, `reference_no`, `service_name`, `service_detail`, `service_fee`, `user_id`) VALUES
-(1, 'svc01', 'gromming', 'Gromming at our place, safe and reliable. and we do it wholeheartedly without discriminating against the race of an animal', 100000, 1),
-(2, 'svc02', 'Animal Lodging', 'Animal lodging at our place is very reliable, because it will be guarded 24 hours', 300000, 1);
+INSERT INTO `tbl_service` (`service_id`, `reference_no`, `service_name`, `service_picture`, `service_detail`, `service_fee`, `user_id`) VALUES
+(1, 'svc01', 'Animal Gromming', 'pet-house.png', 'Gromming at our place, safe and reliable. and we do it wholeheartedly without discriminating against the race of an animal', 100000, 1),
+(2, 'svc02', 'Animal Boarding', 'dog.png', 'Animal lodging at our place is very reliable, because it will be guarded 24 hours', 300000, 1);
 
 -- --------------------------------------------------------
 
@@ -230,9 +257,10 @@ CREATE TABLE `tbl_service_order` (
   `order_service_id` int(11) NOT NULL,
   `reference_no` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `service_id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL,
-  `service_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `service_status` enum('fully paid','partial') COLLATE utf8_unicode_ci NOT NULL,
+  `customer_id` int(11) DEFAULT NULL,
+  `service_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `reserve_date` date DEFAULT NULL,
+  `service_status` enum('fully paid','partial') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'partial',
   `total_amount` float NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -241,8 +269,8 @@ CREATE TABLE `tbl_service_order` (
 -- Dumping data untuk tabel `tbl_service_order`
 --
 
-INSERT INTO `tbl_service_order` (`order_service_id`, `reference_no`, `service_id`, `customer_id`, `service_date`, `service_status`, `total_amount`, `user_id`) VALUES
-(3, 'so01', 1, 1, '2022-12-13 08:03:20', 'fully paid', 120000, 1);
+INSERT INTO `tbl_service_order` (`order_service_id`, `reference_no`, `service_id`, `customer_id`, `service_date`, `reserve_date`, `service_status`, `total_amount`, `user_id`) VALUES
+(3, 'so01', 1, 1, '2022-12-13 08:03:20', NULL, 'fully paid', 120000, 1);
 
 -- --------------------------------------------------------
 
@@ -319,8 +347,8 @@ CREATE TABLE `tbl_vendor` (
 --
 
 INSERT INTO `tbl_vendor` (`company_id`, `company_name`, `company_contact_person`, `company_email`, `company_contact_number`, `company_website`, `company_profile`, `vendor_username`, `vendor_password`, `user_id`) VALUES
-(1, 'WHISKAS', '098765434321', 'whiskas@example.com', '098765434321', 'https://www.whiskasindonesia.com/', 'whiskas_profile.jpg', 'whiskasindonesia', 'mamkucing', 1),
-(2, 'ROYAL CANIN', '0987654321', 'canin@example.com', '0987654321', 'https://www.royalcanin.com/id', 'royal_canin.jpg', 'royalcanin', '$2y$10$gnbKt0M6RP98Xw7VsJBNUu4DeQV3ddT3h7kSCqRP8zUp/eI7SF6z2', 1);
+(1, 'WHISKAS', '098765434321', 'whiskas@example.com', '098765434321', 'https://www.whiskasindonesia.com/', 'Whiskas-Logo.png', 'whiskasindonesia', 'mamkucing', 1),
+(2, 'ROYALCANIN', '0987654321', 'canin@example.com', '0987654321', 'https://www.royalcanin.com/id', 'royal-canin.png', 'royalcanin', '$2y$10$gnbKt0M6RP98Xw7VsJBNUu4DeQV3ddT3h7kSCqRP8zUp/eI7SF6z2', 1);
 
 --
 -- Indexes for dumped tables
@@ -459,25 +487,25 @@ ALTER TABLE `tbl_payment`
 -- AUTO_INCREMENT untuk tabel `tbl_pet`
 --
 ALTER TABLE `tbl_pet`
-  MODIFY `pet_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `pet_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_pet_category`
 --
 ALTER TABLE `tbl_pet_category`
-  MODIFY `pet_category_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `pet_category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_pet_product`
 --
 ALTER TABLE `tbl_pet_product`
-  MODIFY `pet_product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `pet_product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_pet_product_category`
 --
 ALTER TABLE `tbl_pet_product_category`
-  MODIFY `product_category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `product_category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_service`
